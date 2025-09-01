@@ -7,6 +7,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import ComposableNodeContainer
 from launch_ros.descriptions import ComposableNode
+from launch_ros.parameter_descriptions import ParameterValue
 from ament_index_python.packages import get_package_share_directory
 
 
@@ -84,10 +85,11 @@ def generate_launch_description():
         package='isaac_ros_yolov8',
         plugin='nvidia::isaac_ros::yolov8::YoloV8DecoderNode',
         parameters=[{
-            'confidence_threshold': confidence_threshold,
-            'nms_threshold': nms_threshold,
+            # Ensure types are passed correctly to the node
+            'confidence_threshold': ParameterValue(confidence_threshold, value_type=float),
+            'nms_threshold': ParameterValue(nms_threshold, value_type=float),
             # critically ensure num_classes is set here
-            'num_classes': num_classes,
+            'num_classes': ParameterValue(num_classes, value_type=int),
             # tensor_name defaults to "output_tensor"; keep explicit for clarity
             'tensor_name': 'output_tensor',
         }]
