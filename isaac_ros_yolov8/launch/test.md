@@ -16,12 +16,12 @@ cd ${ISAAC_ROS_WS}/src && \
 Run Launch File
 2. Use the following launchers or change accordingly
 
-#with engine update
+#with engine update, model _a
 
-ros2 launch isaac_ros_yolov8 my_yolov8.launch.py   model_file_path:=${ISAAC_ROS_WS}/isaac_ros_assets/models/yolov8/td06_a.onnx   engine_file_path:=${ISAAC_ROS_WS}/isaac_ros_assets/models/yolov8/td06_a.plan   network_image_width:=640 network_image_height:=640   input_tensor_names:="['input_tensor']"   input_binding_names:="['images']"   output_tensor_names:="['output_tensor']"   output_binding_names:="['output0']"   num_classes:=1   force_engine_update:=True   verbose:=True  yolov8_decoder_node.confidence_threshold:=0.7
+ros2 launch isaac_ros_yolov8 my_yolov8.launch.py   model_file_path:=${ISAAC_ROS_WS}/isaac_ros_assets/models/yolov8/td06_a.onnx   engine_file_path:=${ISAAC_ROS_WS}/isaac_ros_assets/models/yolov8/td06_a.plan   network_image_width:=640 network_image_height:=640   input_tensor_names:="['input_tensor']"   input_binding_names:="['images']"   output_tensor_names:="['output_tensor']"   output_binding_names:="['output0']"   num_classes:=1   force_engine_update:=True   verbose:=True
 
-#threshold, no engine update
+#threshold, no engine update, model _c
 
-admin@tndlux-G16:/workspaces/isaac_ros-dev$ ros2 launch isaac_ros_yolov8 my_yolov8.launch.py model_file_path:=${ISAAC_ROS_WS}/isaac_ros_assets/models/yolov8/td06_a.onnx engine_file_path:=${ISAAC_ROS_WS}/isaac_ros_assets/models/yolov8/td06_a.plan network_image_width:=640 network_image_height:=640 input_tensor_names:="['input_tensor']" input_binding_names:="['images']" output_tensor_names:="['output_tensor']" output_binding_names:="['output0']" num_classes:=1 verbose:=True confidence_threshold:=0.7 nms_threshold:=0.5
+ros2 launch isaac_ros_yolov8 my_yolov8.launch.py model_file_path:=${ISAAC_ROS_WS}/isaac_ros_assets/models/yolov8/td06_c.onnx engine_file_path:=${ISAAC_ROS_WS}/isaac_ros_assets/models/yolov8/td06_c.plan network_image_width:=640 network_image_height:=640 input_tensor_names:="['input_tensor']" input_binding_names:="['images']" output_tensor_names:="['output_tensor']" output_binding_names:="['output0']" num_classes:=1 verbose:=True confidence_threshold:=0.7 nms_threshold:=0.5 
 
 4. Don't run the rosbag if you publish from Isaac SIM
